@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jackpot — Email templates</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 48px 24px 80px;
+    background: #081a2e;
+    color: #f8faff;
+    font-family: 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 28px; margin: 0 0 8px; font-weight: 800; }
+  .sub { color: #c7d2e0; margin: 0 0 40px; font-size: 15px; }
+  .card {
+    display: block;
+    background: #0f2a44;
+    border: 1px solid #1e3a55;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .card:hover { border-color: #38bdf8; transform: translateY(-2px); }
+  .card h2 { margin: 0 0 4px; font-size: 18px; font-weight: 700; }
+  .card p { margin: 0; color: #c7d2e0; font-size: 14px; }
+  .meta { margin-top: 12px; font-size: 13px; color: #6f7f92; }
+  code {
+    background: #0d1223;
+    border: 1px solid #1e3a55;
+    border-radius: 6px;
+    padding: 2px 6px;
+    font-size: 13px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    color: #38bdf8;
+  }
+  .note { margin-top: 40px; font-size: 14px; color: #c7d2e0; }
+  .note h3 { font-size: 15px; margin: 0 0 8px; color: #f8faff; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Jackpot — Email templates</h1>
+    <p class="sub">Template-uri HTML pentru campanii, construite email-safe (tabele + stiluri inline).</p>
+
+    <a class="card" href="welcome-email.html">
+      <h2>Welcome Email</h2>
+      <p>Banner hero, intro, două carduri de bonus (Sport + Casino), două grile de jocuri, footer.</p>
+      <div class="meta">welcome-email.html · 600px · responsive sub 620px</div>
+    </a>
+
+    <div class="note">
+      <h3>Înainte de trimitere</h3>
+      <p>
+        Imaginile din template folosesc căi relative (<code>images/…</code>). Pentru un send real
+        trebuie înlocuite cu URL-uri absolute — vezi <code>README.md</code>.
+        Linkurile sunt încă placeholder (<code>https://example.com</code>).
+      </p>
+    </div>
+  </div>
+</body>
+</html>
