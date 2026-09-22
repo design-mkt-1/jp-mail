@@ -3,3 +3,6 @@
 *.mp4
 *.MOV
 *.mov
+
+# Arhive de livrare - continutul e deja versionat separat
+*.zip

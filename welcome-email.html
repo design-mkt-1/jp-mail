@@ -19,14 +19,33 @@
     img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
     a { text-decoration: none; }
 
-    /* Layout fix 600px, identic cu Figma. Fara media queries: clientii de mail
-       si browserele mobile micsoreaza intreg mailul ca sa incapa, in loc sa
-       rearanjeze elementele. */
+    /* Fixed 600px layout, 1:1 with the Figma design. Deliberately no media
+       queries: mail clients and mobile browsers scale the whole email down to
+       fit instead of rearranging it. Please do not add breakpoints - stacking
+       the bonus cards or wrapping the game grids was rejected by design. */
   </style>
 </head>
 <body style="margin:0; padding:0; background-color:#081a2e;">
 
-  <!-- preheader (text ascuns, vizibil doar in preview-ul inbox-ului) -->
+  <!-- ════════════════════════════════════════════════════════════════════
+       IMAGE BASE PATH - CHANGE THIS BEFORE SENDING
+
+       Mail clients cannot resolve relative paths. Upload images/ to your CDN
+       and replace the prefix everywhere:
+
+         images/          ->   https://cdn.yourdomain.com/jackpot/
+
+       Match on "images/" alone, NOT on 'src="images/'. The 16 assets are
+       referenced 18 times and only 14 of those are src attributes:
+         14x  src="images/..."                  logo, hero, icons, games
+          2x  background="images/..."           card backgrounds, for Outlook
+          2x  background-image:url('images/...') same two, every other client
+
+       Scoping the replace to src= leaves both offer cards on a dead path.
+       Check with: grep -c 'images/' welcome-email.html   (must return 0)
+       ════════════════════════════════════════════════════════════════════ -->
+
+  <!-- Preheader: hidden text, shown only in the inbox preview line -->
   <!-- ═══════════ EDIT: PREHEADER ═══════════ -->
   <div style="display:none; font-size:1px; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
     Welcome to Jackpot — claim your Sports &amp; Casino welcome bonuses.
@@ -49,7 +68,7 @@
             </td>
           </tr>
 
-          <!-- ═══════════ EDIT: BANNER HERO ═══════════ -->
+          <!-- ═══════════ EDIT: HERO BANNER ═══════════ -->
           <tr>
             <td align="center" style="padding:0 24px;">
               <a href="https://example.com" target="_blank">
@@ -57,9 +76,9 @@
               </a>
             </td>
           </tr>
-          <!-- ═══════════ /EDIT: BANNER HERO ═══════════ -->
+          <!-- ═══════════ /EDIT: HERO BANNER ═══════════ -->
 
-          <!-- ═══════════ EDIT: TITLU + INTRO ═══════════ -->
+          <!-- ═══════════ EDIT: HEADLINE + INTRO ═══════════ -->
           <tr>
             <td style="padding:24px 24px 16px 24px;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#0f2a44; border-radius:12px;">
@@ -76,15 +95,15 @@
               </table>
             </td>
           </tr>
-          <!-- ═══════════ /EDIT: TITLU + INTRO ═══════════ -->
+          <!-- ═══════════ /EDIT: HEADLINE + INTRO ═══════════ -->
 
-          <!-- ────────────── CARDURI OFERTE ────────────── -->
+          <!-- ────────────── BONUS OFFER CARDS ────────────── -->
           <tr>
             <td style="padding:16px 24px;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr>
 
-                  <!-- ═══════════ EDIT: OFERTA SPORT ═══════════ -->
+                  <!-- ═══════════ EDIT: SPORTS OFFER ═══════════ -->
                   <td width="268" valign="top" height="255" background="images/card-sports-bg.png" bgcolor="#0d1223" style="width:268px; height:255px; background-image:url('images/card-sports-bg.png'); background-size:cover; background-position:center; background-repeat:no-repeat; background-color:#0d1223; border-radius:24px;">
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" height="255" style="height:255px;">
                       <tr>
@@ -97,10 +116,10 @@
                               </td>
                             </tr>
                           </table>
-                          <!-- oferta -->
+                          <!-- offer amount -->
                           <div style="margin-top:12px; font-family:'Outfit','Segoe UI',Arial,Helvetica,sans-serif; font-weight:800; font-size:34px; line-height:34px; color:#ffffff; text-align:center;">375%</div>
                           <div style="margin-top:8px; font-family:'Space Mono','Courier New',monospace; font-weight:700; font-size:18px; line-height:26px; color:#ffffff; text-align:center;">UP&nbsp;TO&nbsp;&pound;900</div>
-                          <!-- tag -->
+                          <!-- wagering tag -->
                           <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin-top:8px;">
                             <tr>
                               <td align="center" style="background-color:#12283e; border:1px solid #2d5f7d; border-radius:12px; padding:3px 8px;">
@@ -108,7 +127,7 @@
                               </td>
                             </tr>
                           </table>
-                          <!-- buton -->
+                          <!-- CTA button -->
                           <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:18px;">
                             <tr>
                               <td align="center" style="background-color:#007aff; border-radius:100px;">
@@ -120,11 +139,11 @@
                       </tr>
                     </table>
                   </td>
-                  <!-- ═══════════ /EDIT: OFERTA SPORT ═══════════ -->
+                  <!-- ═══════════ /EDIT: SPORTS OFFER ═══════════ -->
 
                   <td width="16" style="width:16px; font-size:0; line-height:0;">&nbsp;</td>
 
-                  <!-- ═══════════ EDIT: OFERTA CASINO ═══════════ -->
+                  <!-- ═══════════ EDIT: CASINO OFFER ═══════════ -->
                   <td width="268" valign="top" height="255" background="images/card-casino-bg.png" bgcolor="#0d1223" style="width:268px; height:255px; background-image:url('images/card-casino-bg.png'); background-size:cover; background-position:center; background-repeat:no-repeat; background-color:#0d1223; border-radius:24px;">
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" height="255" style="height:255px;">
                       <tr>
@@ -137,10 +156,10 @@
                               </td>
                             </tr>
                           </table>
-                          <!-- oferta -->
+                          <!-- offer amount -->
                           <div style="margin-top:12px; font-family:'Outfit','Segoe UI',Arial,Helvetica,sans-serif; font-weight:800; font-size:34px; line-height:34px; color:#ffffff; text-align:center;">&pound;5,500</div>
                           <div style="margin-top:8px; font-family:'Space Mono','Courier New',monospace; font-weight:700; font-size:18px; line-height:26px; color:#ffffff; text-align:center;">UP&nbsp;TO&nbsp;250&nbsp;FS</div>
-                          <!-- tag -->
+                          <!-- wagering tag -->
                           <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin-top:8px;">
                             <tr>
                               <td align="center" style="background-color:#2a2110; border:1px solid #6e5626; border-radius:12px; padding:3px 8px;">
@@ -148,7 +167,7 @@
                               </td>
                             </tr>
                           </table>
-                          <!-- buton -->
+                          <!-- CTA button -->
                           <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:18px;">
                             <tr>
                               <td align="center" style="background-color:#007aff; border-radius:100px;">
@@ -160,14 +179,14 @@
                       </tr>
                     </table>
                   </td>
-                  <!-- ═══════════ /EDIT: OFERTA CASINO ═══════════ -->
+                  <!-- ═══════════ /EDIT: CASINO OFFER ═══════════ -->
 
                 </tr>
               </table>
             </td>
           </tr>
 
-          <!-- ────────────── SECTIUNEA POPULAR ────────────── -->
+          <!-- ────────────── "POPULAR" SECTION HEADING ────────────── -->
           <tr>
             <td style="padding:16px 33px 0 33px;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -185,7 +204,7 @@
               </table>
             </td>
           </tr>
-          <!-- ═══════════ EDIT: JOCURI POPULAR ═══════════ -->
+          <!-- ═══════════ EDIT: POPULAR GAMES ROW ═══════════ -->
           <tr>
             <td style="padding:16px 33px 0 33px;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -201,9 +220,9 @@
               </table>
             </td>
           </tr>
-          <!-- ═══════════ /EDIT: JOCURI POPULAR ═══════════ -->
+          <!-- ═══════════ /EDIT: POPULAR GAMES ROW ═══════════ -->
 
-          <!-- ────────────── SECTIUNEA TOP GAMES ────────────── -->
+          <!-- ────────────── "TOP GAMES" SECTION HEADING ────────────── -->
           <tr>
             <td style="padding:20px 33px 0 33px;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -221,7 +240,7 @@
               </table>
             </td>
           </tr>
-          <!-- ═══════════ EDIT: JOCURI TOP GAMES ═══════════ -->
+          <!-- ═══════════ EDIT: TOP GAMES ROW ═══════════ -->
           <tr>
             <td style="padding:16px 33px 0 33px;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -237,7 +256,7 @@
               </table>
             </td>
           </tr>
-          <!-- ═══════════ /EDIT: JOCURI TOP GAMES ═══════════ -->
+          <!-- ═══════════ /EDIT: TOP GAMES ROW ═══════════ -->
 
           <!-- ────────────── TELEGRAM / TERMS / 18+ ────────────── -->
           <tr>
